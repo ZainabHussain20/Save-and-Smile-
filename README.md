@@ -10,7 +10,7 @@
 
 
 
-[Zainab_linkedin](https://www.linkedin.com/in/zainab-hussain-350643310/) , [Fatema_linkedin](https://github.com/fatemaajmi) , [Mohammed_linkedin](https://github.com/fatemaajmi)
+[Zainab_linkedin](https://www.linkedin.com/in/zainab-hussain-350643310/) , [Fatema_linkedin](linkedin.com/in/fatema-alajmi404) , [Mohammed_linkedin]()
 
 ## Description
 This repository contains the backend code for CouponSphere, a comprehensive coupon management application. Built with Express.js, it provides RESTful APIs for user authentication, coupon management, category organization, and user reviews. It supports three types of users: clients, vendors, and admins.
