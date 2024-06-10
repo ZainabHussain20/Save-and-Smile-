@@ -23,7 +23,7 @@ This repository contains the backend code for CouponSphere, a comprehensive coup
 `JsonWebToken`
 `bcryptjs`
 
-[Trello:](https://trello.com/b/K10bdZfI/save-and-smile) 
+[Trello](https://trello.com/b/K10bdZfI/save-and-smile) 
 
 ## Entity Relationship Diagram
 
