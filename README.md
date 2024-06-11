@@ -26,8 +26,7 @@ This repository contains the backend code for CouponSphere, a comprehensive coup
 [Trello](https://trello.com/b/K10bdZfI/save-and-smile) 
 
 ## Entity Relationship Diagram
-
-![28FDF0B9-3724-4EED-98A5-2CBA449624CD](https://github.com/ZainabHussain20/Save-and-Smile-/assets/121151845/d7d15d1a-469f-4e37-9cb3-afb5342f26af)
+(https://drive.google.com/file/d/1H9CiRfQQABZS6enL7TQ4QrW8daL8YzY-/view)
 
 
 
