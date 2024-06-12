@@ -1,5 +1,12 @@
 var createError = require('http-errors');
 var express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const categoryRouter= require('./routes/categories')
+const couponRouter = require ('./routes/coupons')
+const reviewsRouter = require ('./routes/reviews')
+
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -7,7 +14,24 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on('connected', () => {
+  console.log('Connected to MongoDB');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.log('Error connecting to MongoDB', err);
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +45,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/reviews' , reviewsRouter)
+app.use('/categories' , categoryRouter)
+app.use('/coupons' , couponRouter)
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
