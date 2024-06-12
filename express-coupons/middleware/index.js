@@ -55,3 +55,5 @@ module.exports = {
   comparePassword,
   hashPassword
 }
+
+// to test
