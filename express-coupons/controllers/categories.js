@@ -1,6 +1,6 @@
 const Category = require('../models/category');
 
-exports.getAllCategories = async (req, res) => {
+const getAllCategories = async (req, res) => {
   try {
     const categories = await Category.find().populate('coupons');
     res.status(200).json(categories);
@@ -9,7 +9,7 @@ exports.getAllCategories = async (req, res) => {
   }
 };
 
-exports.getCategory = async (req, res) => {
+const getCategory = async (req, res) => {
   try {
     const category = await Category.findById(req.params.id).populate('coupons');
     res.status(200).json(category);
@@ -18,7 +18,7 @@ exports.getCategory = async (req, res) => {
   }
 };
 
-exports.createCategory = async (req, res) => {
+const createCategory = async (req, res) => {
   try {
     const category = new Category(req.body);
     await category.save();
@@ -28,7 +28,7 @@ exports.createCategory = async (req, res) => {
   }
 };
 
-exports.updateCategory = async (req, res) => {
+const updateCategory = async (req, res) => {
   try {
     const category = await Category.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.status(200).json(category);
@@ -37,7 +37,7 @@ exports.updateCategory = async (req, res) => {
   }
 };
 
-exports.deleteCategory = async (req, res) => {
+const deleteCategory = async (req, res) => {
   try {
     await Category.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: 'Category deleted' });
@@ -45,3 +45,11 @@ exports.deleteCategory = async (req, res) => {
     res.status(500).json({ message: 'Error deleting category', error: err });
   }
 };
+
+module.exports={
+  deleteCategory, 
+  updateCategory,
+  createCategory,
+  getCategory,
+  getAllCategories,
+}
