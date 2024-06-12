@@ -1,6 +1,6 @@
 const User = require('../models/user');
 
-exports.getUser = async (req, res) => {
+const getUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.id).populate('savedCoupons');
     res.status(200).json(user);
@@ -9,7 +9,7 @@ exports.getUser = async (req, res) => {
   }
 };
 
-exports.updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
   try {
     const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.status(200).json(user);
@@ -18,7 +18,7 @@ exports.updateUser = async (req, res) => {
   }
 };
 
-exports.deleteUser = async (req, res) => {
+const deleteUser = async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: 'User deleted' });
@@ -27,7 +27,7 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
-exports.getSavedCoupons = async (req, res) => {
+const getSavedCoupons = async (req, res) => {
   try {
     const user = await User.findById(req.params.id).populate('savedCoupons');
     res.status(200).json(user.savedCoupons);
@@ -35,3 +35,10 @@ exports.getSavedCoupons = async (req, res) => {
     res.status(500).json({ message: 'Error fetching saved coupons', error: err });
   }
 };
+
+module.exports =  {
+  getSavedCoupons , 
+  deleteUser,
+  updateUser,
+  getUser
+}

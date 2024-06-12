@@ -1,6 +1,6 @@
 const Review = require('../models/review');
 
-exports.getAllReviews = async (req, res) => {
+const getAllReviews = async (req, res) => {
   try {
     const reviews = await Review.find().populate('user').populate('coupon');
     res.status(200).json(reviews);
@@ -9,7 +9,7 @@ exports.getAllReviews = async (req, res) => {
   }
 };
 
-exports.getReview = async (req, res) => {
+const getReview = async (req, res) => {
   try {
     const review = await Review.findById(req.params.id).populate('user').populate('coupon');
     res.status(200).json(review);
@@ -18,7 +18,7 @@ exports.getReview = async (req, res) => {
   }
 };
 
-exports.createReview = async (req, res) => {
+const createReview = async (req, res) => {
   try {
     const review = new Review(req.body);
     await review.save();
@@ -28,7 +28,7 @@ exports.createReview = async (req, res) => {
   }
 };
 
-exports.updateReview = async (req, res) => {
+const updateReview = async (req, res) => {
   try {
     const review = await Review.findByIdAndUpdate(req.params.id, req.body, { new: true });
     res.status(200).json(review);
@@ -37,7 +37,7 @@ exports.updateReview = async (req, res) => {
   }
 };
 
-exports.deleteReview = async (req, res) => {
+const deleteReview = async (req, res) => {
   try {
     await Review.findByIdAndDelete(req.params.id);
     res.status(200).json({ message: 'Review deleted' });
@@ -45,3 +45,11 @@ exports.deleteReview = async (req, res) => {
     res.status(500).json({ message: 'Error deleting review', error: err });
   }
 };
+
+module.exports={
+  deleteReview, 
+  updateReview,
+  createReview,
+  getReview,
+  getAllReviews
+}
