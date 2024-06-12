@@ -8,7 +8,9 @@ const couponSchema = new Schema({
   expirationDate: { type: Date, required: true },
   category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
-  vendor: { type: Schema.Types.ObjectId, ref: 'User', required: true }
+  vendor: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+  img : {type : String }
+
 }, {
   timestamps: true
 });

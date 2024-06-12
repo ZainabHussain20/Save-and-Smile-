@@ -15,7 +15,7 @@ const reviewSchema = new schema(
       required: true
     },
     user: [{ type: schema.Types.ObjectId, ref: 'User', required: true }],
-    coupon: [{ type: schema.Types.ObjectId, ref: 'coupon', required: true }]
+    coupon: [{ type: schema.Types.ObjectId, ref: 'Coupon', required: true }]
   },
   {
     timestamps: true
