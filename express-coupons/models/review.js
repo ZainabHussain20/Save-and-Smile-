@@ -4,14 +4,6 @@ const schema = mongoose.Schema
 
 const reviewSchema = new schema(
   {
-    username: {
-      type: String,
-      required: true
-    },
-    userID: {
-      type: String,
-      required: true
-    },
     Comment: {
       type: String,
       required: true
@@ -19,10 +11,11 @@ const reviewSchema = new schema(
     rate: {
       type: Number,
       min: 1,
-      max: 5
+      max: 5,
+      required: true
     },
-    username: [{ type: schema.Types.ObjectId, ref: 'User' }],
-    userID: [{ type: schema.Types.ObjectId, ref: 'User' }]
+    user: [{ type: schema.Types.ObjectId, ref: 'User', required: true }],
+    coupon: [{ type: schema.Types.ObjectId, ref: 'coupon', required: true }]
   },
   {
     timestamps: true
