@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 var cors = require('cors');
 
 const dotenv = require('dotenv');
-const categoryRouter= require('./routes/categories')
 const couponRouter = require ('./routes/coupons')
 const reviewsRouter = require ('./routes/reviews')
 const AuthRouter = require ('./routes/AuthRouter')
@@ -46,7 +45,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/reviews' , reviewsRouter)
-app.use('/categories' , categoryRouter)
 app.use('/coupons' , couponRouter)
 app.use('/auth' , AuthRouter)
 
