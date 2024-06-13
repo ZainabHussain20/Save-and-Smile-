@@ -1,11 +1,13 @@
 var createError = require('http-errors');
 var express = require('express');
 const mongoose = require('mongoose');
+var cors = require('cors');
+
 const dotenv = require('dotenv');
 const categoryRouter= require('./routes/categories')
 const couponRouter = require ('./routes/coupons')
 const reviewsRouter = require ('./routes/reviews')
-
+const AuthRouter = require ('./routes/AuthRouter')
 
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -15,7 +17,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 dotenv.config();
-
+require('./db/index')
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -34,6 +36,7 @@ mongoose.connection.on('error', (err) => {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -45,6 +48,7 @@ app.use('/users', usersRouter);
 app.use('/reviews' , reviewsRouter)
 app.use('/categories' , categoryRouter)
 app.use('/coupons' , couponRouter)
+app.use('/auth' , AuthRouter)
 
 
 
