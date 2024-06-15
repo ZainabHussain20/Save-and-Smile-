@@ -7,7 +7,7 @@ const dotenv = require('dotenv');
 const couponRouter = require ('./routes/coupons')
 const reviewsRouter = require ('./routes/reviews')
 const AuthRouter = require ('./routes/AuthRouter')
-
+const businessRouter = require('./routes/business')
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -47,7 +47,7 @@ app.use('/users', usersRouter);
 app.use('/reviews' , reviewsRouter)
 app.use('/coupons' , couponRouter)
 app.use('/auth' , AuthRouter)
-
+app.use('/businesses' , businessRouter)
 
 
 // catch 404 and forward to error handler
