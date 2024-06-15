@@ -1,8 +1,9 @@
 const User = require('../models/user');
+const Coupon = require('../models/coupon');
 
 const getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).populate('savedCoupons');
+    const user = await User.findById(req.params.id);
     res.status(200).json(user);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching user', error: err });
@@ -36,9 +37,9 @@ const getSavedCoupons = async (req, res) => {
   }
 };
 
-module.exports =  {
-  getSavedCoupons , 
-  deleteUser,
+module.exports = {
+  getUser,
   updateUser,
-  getUser
-}
+  deleteUser,
+  getSavedCoupons,
+};
