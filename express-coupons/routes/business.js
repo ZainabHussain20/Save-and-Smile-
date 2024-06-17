@@ -1,9 +1,10 @@
 const express = require('express');
-const { registerBusiness, getAllBusinesses, approveBusiness } = require('../controllers/business');
+const { registerBusiness, getAllBusinesses, approveBusiness ,  createBusiness } = require('../controllers/business');
 const { stripToken, verifyToken } = require('../middleware');
 const { isAdmin } = require('../middleware/role');
 
 const router = express.Router();
+router.post('/', createBusiness);
 
 router.post('/', stripToken, verifyToken, isAdmin, registerBusiness); // Admin only
 router.get('/', stripToken, verifyToken, getAllBusinesses); // Authenticated users

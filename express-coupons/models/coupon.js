@@ -24,6 +24,8 @@ const CouponSchema = new mongoose.Schema({
       ref: 'Review',
     },
   ],
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('Coupon', CouponSchema);

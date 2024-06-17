@@ -25,6 +25,8 @@ const UserSchema = new mongoose.Schema({
       ref: 'Coupon',
     },
   ],
+}, {
+  timestamps: true
 });
 
 module.exports = mongoose.model('User', UserSchema);
