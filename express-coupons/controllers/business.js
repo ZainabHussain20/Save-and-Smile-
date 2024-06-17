@@ -12,12 +12,12 @@ const registerBusiness = async (req, res) => {
 };
 
 const getAllBusinesses = async (req, res) => {
+  const category = req.query.category;
   try {
-    const businesses = await Business.find();
+    const businesses = await Business.find({category:category})
     res.status(200).json(businesses);
-  } catch (error) {
-    console.error('Error fetching businesses:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+  } catch (err) {
+    res.status(500).json({ message: `Error fetching businesses in category ${category}`, error: err });
   }
 };
 
@@ -32,8 +32,18 @@ const approveBusiness = async (req, res) => {
   }
 };
 
+const createBusiness = async (req, res) => {
+  try {
+    const business = new Business(req.body);
+    await business.save();
+    res.status(201).json(business);
+  } catch (err) {
+    res.status(500).json({ message: 'Error creating business', error: err });
+  }
+};
 module.exports = {
   registerBusiness,
   getAllBusinesses,
   approveBusiness,
+  createBusiness
 };
