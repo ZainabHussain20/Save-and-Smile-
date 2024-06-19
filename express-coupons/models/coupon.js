@@ -3,20 +3,24 @@ const mongoose = require('mongoose');
 const CouponSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: false,
   },
   discount: {
     type: Number,
-    required: true,
+    required: false,
   },
   description: {
     type: String,
-    required: true,
+    required: false,
   },
   business: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Business',
-    required: true,
+    required: false,
+  },
+  img: {
+    type : String , 
+    required: false 
   },
   reviews: [
     {
