@@ -9,6 +9,16 @@ const getAllCoupons = async (req, res) => {
   }
 };
 
+const getAllCouponsByBusiness = async (req, res) => {
+  const { id } = req.params; 
+  try {
+    const coupons = await Coupon.find({ business: id });
+    res.status(200).json(coupons);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching coupons', error: err });
+  }
+};
+
 const getCoupon = async (req, res) => {
   try {
     const coupon = await Coupon.findById(req.params.id).populate('reviews');
@@ -51,6 +61,6 @@ module.exports={
   updateCoupon,
   createCoupon,
   getCoupon,
-  getAllCoupons
-
+  getAllCoupons,
+  getAllCouponsByBusiness
 }
