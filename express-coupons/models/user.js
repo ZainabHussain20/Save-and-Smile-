@@ -19,12 +19,12 @@ const UserSchema = new mongoose.Schema({
     enum: ['client', 'vendor', 'admin'],
     required: true,
   },
-  savedCoupons: [
+  usedCoupons : [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Coupon',
-    },
-  ],
+      type : mongoose.Schema.Types.ObjectId, 
+      ref:'Coupon', 
+    }
+  ]
 }, {
   timestamps: true
 });
