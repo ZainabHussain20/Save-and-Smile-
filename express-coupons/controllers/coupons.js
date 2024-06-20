@@ -7,7 +7,7 @@ const getAllCoupons = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Error fetching coupons', error: err });
   }
-};
+}
 
 const getAllCouponsByBusiness = async (req, res) => {
   const { id } = req.params; 
@@ -17,7 +17,7 @@ const getAllCouponsByBusiness = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Error fetching coupons', error: err });
   }
-};
+}
 
 const getCoupon = async (req, res) => {
   try {
@@ -26,7 +26,7 @@ const getCoupon = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: 'Error fetching coupon', error: err });
   }
-};
+}
 
 const createCoupon = async (req, res) => {
   try {
