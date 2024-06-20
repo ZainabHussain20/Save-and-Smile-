@@ -18,8 +18,8 @@ const { stripToken, verifyToken } = require('../middleware');
 const { isAdmin } = require('../middleware/role');
 const router = express.Router();
 router.post('/', createBusiness);
-router.post('/', registerBusiness); // Admin only
+router.post('/', stripToken, verifyToken, isAdmin, registerBusiness); // Admin only
 router.get('/', getAllBusinesses); // Authenticated users
-router.put('/:id', updateBusiness); // Admin only
+router.put('/:id', stripToken, verifyToken, isAdmin, updateBusiness); // Admin only
 router.delete('/:id', deleteBusiness); // Admin only
 module.exports = router;
