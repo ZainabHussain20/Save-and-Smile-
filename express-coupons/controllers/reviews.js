@@ -1,11 +1,21 @@
 const Review = require('../models/review');
-
+const Coupon = require('../models/coupon')
 const getAllReviews = async (req, res) => {
   try {
     const reviews = await Review.find().populate('user').populate('coupon');
     res.status(200).json(reviews);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching reviews', error: err });
+  }
+}
+
+const getAllRatings = async (req, res) => {
+  try {
+    const { couponId } = req.params;
+    const ratings = await Review.find({ coupon: couponId }).populate('user');
+    res.status(200).json(ratings);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching ratings', error: err });
   }
 };
 
@@ -20,8 +30,15 @@ const getReview = async (req, res) => {
 
 const createReview = async (req, res) => {
   try {
-    const review = new Review(req.body);
+    const { user, coupon, rating, comment } = req.body;
+    const review = new Review({ user, coupon, rating, comment });
     await review.save();
+    const couponDoc = await Coupon.findById(coupon);
+    console.log(`new review id ${review._id}`)
+    console.log(`review ${reviewx }`)
+    couponDoc.reviews.push(review._id);
+    await couponDoc.save();
+
     res.status(201).json(review);
   } catch (err) {
     res.status(500).json({ message: 'Error creating review', error: err });
@@ -51,5 +68,6 @@ module.exports={
   updateReview,
   createReview,
   getReview,
-  getAllReviews
+  getAllReviews,
+  getAllRatings
 }
