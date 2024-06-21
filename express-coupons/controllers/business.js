@@ -81,7 +81,7 @@ const createBusiness = async (req, res) => {
 const updateBusiness = async (req, res) => {
   try {
     const { id } = req.params;
-    const business = await Business.findByIdAndUpdate(id, { approved: true }, { new: true });
+    const business = await Business.findByIdAndUpdate(id, req.body, { approved: true }, { new: true });
     res.status(200).json(business);
   } catch (error) {
     console.error('Error approving business:', error);
