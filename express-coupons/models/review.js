@@ -4,7 +4,7 @@ const ReviewSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
+    required: false,
   },
   coupon: {
     type: mongoose.Schema.Types.ObjectId,
@@ -20,6 +20,10 @@ const ReviewSchema = new mongoose.Schema({
   comment: {
     type: String,
     required: true,
+  },
+  userName: {
+    type: String,
+    required: false,
   },
 }, {
   timestamps: true
