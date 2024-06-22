@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
-
 const ReviewSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true,
+    required: false,
   },
   coupon: {
     type: mongoose.Schema.Types.ObjectId,
@@ -21,8 +20,11 @@ const ReviewSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  userName: {
+    type: String,
+    required: false,
+  },
 }, {
   timestamps: true
 });
-
 module.exports = mongoose.model('Review', ReviewSchema);
