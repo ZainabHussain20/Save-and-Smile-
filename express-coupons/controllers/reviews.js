@@ -1,5 +1,6 @@
 const Review = require('../models/review');
 const Coupon = require('../models/coupon');
+
 const getAllReviews = async (req, res) => {
   try {
     const reviews = await Review.find().populate('user').populate('coupon');
