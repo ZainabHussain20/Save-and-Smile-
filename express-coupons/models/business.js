@@ -12,7 +12,7 @@ const BusinessSchema = new mongoose.Schema({
     required: false },
   description: {
     type: String,
-    required: true,
+    required: false,
   },
 
   location: { 

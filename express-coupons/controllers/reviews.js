@@ -1,5 +1,6 @@
 const Review = require('../models/review');
-const Coupon = require('../models/coupon')
+const Coupon = require('../models/coupon');
+
 const getAllReviews = async (req, res) => {
   try {
     const reviews = await Review.find().populate('user').populate('coupon');
@@ -11,8 +12,8 @@ const getAllReviews = async (req, res) => {
 
 const getAllRatings = async (req, res) => {
   try {
-    const { couponId } = req.params;
-    const ratings = await Review.find({ coupon: couponId }).populate('user');
+    const { id } = req.params;
+    const ratings = await Review.find({ coupon: id })
     res.status(200).json(ratings);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching ratings', error: err });
@@ -30,12 +31,10 @@ const getReview = async (req, res) => {
 
 const createReview = async (req, res) => {
   try {
-    const { user, coupon, rating, comment } = req.body;
-    const review = new Review({ user, coupon, rating, comment });
+    const { userName, coupon, rating, comment } = req.body;
+    const review = new Review({ userName, coupon, rating, comment });
     await review.save();
     const couponDoc = await Coupon.findById(coupon);
-    console.log(`new review id ${review._id}`)
-    console.log(`review ${reviewx }`)
     couponDoc.reviews.push(review._id);
     await couponDoc.save();
 
