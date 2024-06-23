@@ -1,7 +1,6 @@
 const express = require('express');
 const { createReview, getAllReviews, getReview, updateReview, deleteReview, getAllRatings } = require('../controllers/reviews');  // Import getAllRatings
 const { stripToken, verifyToken } = require('../middleware');
-
 // const { isClient } = require('../middleware/role');
 
 const router = express.Router();

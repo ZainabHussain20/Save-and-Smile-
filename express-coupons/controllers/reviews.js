@@ -32,8 +32,6 @@ const createReview = async (req, res) => {
     const review = new Review({ userName, coupon, rating, comment });
     await review.save();
     const couponDoc = await Coupon.findById(coupon);
-    console.log(`new review id ${review._id}`)
-    console.log(`review ${reviewx }`)
     couponDoc.reviews.push(review._id);
     await couponDoc.save();
     res.status(201).json(review);
