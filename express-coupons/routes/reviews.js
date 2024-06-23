@@ -9,7 +9,7 @@ router.get('/:id', getReview);
 router.get('/coupons/:id', getAllRatings)
 router.post('/', createReview);
 router.put('/:id', stripToken, verifyToken, updateReview);
-router.delete('/:id', stripToken, verifyToken, deleteReview);
+router.delete('/', stripToken, verifyToken, deleteReview);
 
 
 
