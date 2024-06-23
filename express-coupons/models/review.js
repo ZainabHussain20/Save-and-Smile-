@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const ReviewSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -28,5 +27,4 @@ const ReviewSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
-
 module.exports = mongoose.model('Review', ReviewSchema);
